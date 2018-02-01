@@ -7,7 +7,11 @@ export const fetchAllPeople = () => {
   const url =  'https://ghibliapi.herokuapp.com/people'
   const request = axios.get(url)
 
-  return {type: FETCH_ALL_PEOPLE, payload: request}
+  return (dispatch) => {
+  request.then((data) => {
+    dispatch({ type: FETCH_ALL_PEOPLE, payload: data })
+  });
+};
 }
 
 export const fetchPersonInfo = () => {

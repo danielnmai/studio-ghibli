@@ -4,17 +4,29 @@ import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux';
 import { fetchAllPeople, fetchPersonInfo } from '../actions'
 
+
+
 class PeopleList extends React.Component {
 
   componentDidMount() {
     this.props.fetchAllPeople();
   }
 
+  renderPersonInfo(data){
+    return <PersonInfo key={data.id} info={data} />
+  }
+
   render() {
-    console.log(this.props.people)
-    return (<div>
-      <PersonInfo text='John'/>
-    </div>)
+    const { people } = this.props.people;
+    if(people) {
+      console.log(people)
+      return (
+        <div>
+          {people.map(data => this.renderPersonInfo(data))}
+        </div>
+      )
+    }
+    return <div>Loading</div>
   }
 
 }
