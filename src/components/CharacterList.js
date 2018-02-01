@@ -1,17 +1,17 @@
 import React from 'react';
-import PersonInfo from './PersonInfo'
+import CharacterInfo from './CharacterInfo'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
-import {fetchAllPeople, fetchPersonInfo} from '../actions'
+import {fetchAllPeople, fetchCharacterInfo} from '../actions'
 
-class PeopleList extends React.Component {
+class CharacterList extends React.Component {
 
   componentDidMount() {
     this.props.fetchAllPeople();
   }
 
-  renderPersonInfo(data) {
-    return <PersonInfo key={data.id} info={data}/>
+  renderCharacterInfo(data) {
+    return <CharacterInfo key={data.id} info={data}/>
   }
 
   render() {
@@ -27,7 +27,7 @@ class PeopleList extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {people.map(data => this.renderPersonInfo(data))}
+          {people.map(data => this.renderCharacterInfo(data))}
         </tbody>
       </table>)
 
@@ -47,4 +47,4 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PeopleList)
+export default connect(mapStateToProps, mapDispatchToProps)(CharacterList)

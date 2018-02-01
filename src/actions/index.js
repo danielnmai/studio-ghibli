@@ -14,6 +14,6 @@ export const fetchAllPeople = () => {
 };
 }
 
-export const fetchPersonInfo = () => {
+export const fetchCharacterInfo = () => {
   return {type: FETCH_PERSON_INFO, payload: 'person info'}
 }
