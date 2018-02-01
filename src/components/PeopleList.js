@@ -1,10 +1,8 @@
 import React from 'react';
 import PersonInfo from './PersonInfo'
 import {connect} from 'react-redux'
-import { bindActionCreators } from 'redux';
-import { fetchAllPeople, fetchPersonInfo } from '../actions'
-
-
+import {bindActionCreators} from 'redux';
+import {fetchAllPeople, fetchPersonInfo} from '../actions'
 
 class PeopleList extends React.Component {
 
@@ -12,27 +10,35 @@ class PeopleList extends React.Component {
     this.props.fetchAllPeople();
   }
 
-  renderPersonInfo(data){
-    return <PersonInfo key={data.id} info={data} />
+  renderPersonInfo(data) {
+    return <PersonInfo key={data.id} info={data}/>
   }
 
   render() {
-    const { people } = this.props.people;
-    if(people) {
+    const {people} = this.props.people;
+    if (people) {
       console.log(people)
-      return (
-        <div>
+      return (<table className="table table-hover">
+        <thead>
+          <tr>
+            <th>
+              Characters 
+            </th>
+          </tr>
+        </thead>
+        <tbody>
           {people.map(data => this.renderPersonInfo(data))}
-        </div>
-      )
+        </tbody>
+      </table>)
+
     }
     return <div>Loading</div>
   }
 
 }
 
-function mapStateToProps({ people }) {
-  return { people }
+function mapStateToProps({people}) {
+  return {people}
 }
 
 function mapDispatchToProps(dispatch) {

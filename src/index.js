@@ -6,7 +6,7 @@ import ReduxPromise from 'redux-promise';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import reducers from './reducers'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import registerServiceWorker from './registerServiceWorker';
 
 
