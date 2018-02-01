@@ -7,9 +7,6 @@ const fetchPeople = () => {
   const request = axios.get(url).then((data) => {
     console.log(data)
   })
-
-
-
   return (dispatch) => {
   request.then((data) => {
     dispatch({ type: FETCH_PEOPLE, payload: data })
