@@ -1,10 +1,10 @@
-import { FETCH_PEOPLE } from '../actions/index'
+import { FETCH_ALL_PEOPLE } from '../actions/index'
 
-export default function(state = {}, action) {
+export default function(state = [], action) {
   switch (action.type) {
-    case FETCH_PEOPLE:
-      return  { people: [action.payload.data] }
+    case FETCH_ALL_PEOPLE:
+      return [ action.payload.data, ...state]
     default:
-      return {people: []}
+      return state
   }
 }

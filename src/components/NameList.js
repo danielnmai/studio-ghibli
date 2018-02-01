@@ -1,7 +1,7 @@
 import React from 'react';
 import NameItem from './NameItem'
 import {connect} from 'react-redux'
-import fetchPeople from '../actions'
+import { fetchPeople } from '../actions'
 
 class NameList extends React.Component {
 
