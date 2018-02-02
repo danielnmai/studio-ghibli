@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchCharacter } from '../../actions';
+import { fetchFilm} from '../../actions';
 
 class SearchBar extends Component {
   constructor(props) {
@@ -20,13 +20,13 @@ class SearchBar extends Component {
 
   onFormSubmit(event) {
     event.preventDefault();
-    this.props.fetchCharacter(this.state.term);
+    this.props.fetchFilm(this.state.term);
     this.setState({ term: ''});
   }
 
   render() {
     return (<form onSubmit={this.onFormSubmit} className="input-group">
-      <input placeholder="Type in Your Favorite Character Names" className="form-control" value={this.state.term} onChange={this.onInputChange}/>
+      <input placeholder="Type in Your Favorite Movie Names" className="form-control" value={this.state.term} onChange={this.onInputChange}/>
       <span className="input-group-btn">
         <button type="submit" className="btn btn-secondary">
           Submit
@@ -38,7 +38,7 @@ class SearchBar extends Component {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    fetchCharacter
+    fetchFilm
   }, dispatch);
 }
 

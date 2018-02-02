@@ -2,12 +2,12 @@ import React from 'react';
 import CharacterInfo from './CharacterInfo'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
-import {fetchAllPeople} from '../../actions'
+import {fetchAllCharacters} from '../../actions'
 
 class CharacterList extends React.Component {
 
   componentDidMount() {
-    this.props.fetchAllPeople();
+    this.props.fetchAllCharacters();
   }
 
   renderCharacterInfo(data) {
@@ -15,9 +15,10 @@ class CharacterList extends React.Component {
   }
 
   render() {
-    const {people} = this.props.people;
-    if (people) {
-      console.log(people)
+    const {characters} = this.props.characters;
+    console.log(this.props)
+    if (characters) {
+
       return (<table className="table table-hover">
         <thead>
           <tr>
@@ -27,7 +28,7 @@ class CharacterList extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {people.map(data => this.renderCharacterInfo(data))}
+          {characters.map(data => this.renderCharacterInfo(data))}
         </tbody>
       </table>)
 
@@ -37,13 +38,13 @@ class CharacterList extends React.Component {
 
 }
 
-function mapStateToProps({people}) {
-  return {people}
+function mapStateToProps({characters}) {
+  return {characters}
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    fetchAllPeople
+    fetchAllCharacters
   }, dispatch);
 }
 
