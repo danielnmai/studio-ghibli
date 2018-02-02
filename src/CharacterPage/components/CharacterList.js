@@ -3,6 +3,7 @@ import CharacterInfo from './CharacterInfo'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
 import {fetchAllCharacters} from '../../actions'
+import '../css/character.css'
 
 class CharacterList extends React.Component {
 
@@ -15,18 +16,28 @@ class CharacterList extends React.Component {
   }
 
   renderCharacters(chars) {
-      return (<table className="table table-hover">
-        <thead>
-          <tr>
-            <th>
-              Characters
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {chars.map(data => this.renderCharacterInfo(data))}
-        </tbody>
-      </table>)
+      return (
+        <div className='container'>
+          <table className="table table-hover">
+          <thead>
+            <tr>
+              <th>
+                <div className='row'>
+                  <div className='col-sm-2'>
+                    <strong>Characters</strong>
+                  </div>
+                  <div className='col-sm-3'><a href='/films'>Your Favorites</a></div>
+                </div>
+
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {chars.map(data => this.renderCharacterInfo(data))}
+          </tbody>
+        </table>
+        </div>
+      )
   }
 
   render() {

@@ -10,6 +10,11 @@ class CharacterInfo extends React.Component {
       let currentState = this.state.showDetailInfo
       this.setState({showDetailInfo: !currentState})
     }
+
+  addFavorite = (info) => {
+    console.log('Item added!')
+    console.log(info)
+  }
   renderSpecies = (info) => {
     return (
     <div className='row'>
@@ -56,7 +61,7 @@ class CharacterInfo extends React.Component {
         <td>
           <div className='row'>
             <div className='col-sm-2'>
-              <button type='button' className='btn btn-outline-info'>Add Favorite</button>
+              <button type='button' onClick={this.addFavorite(info)} className='btn btn-sm btn-outline-info'>Add Favorite</button>
             </div>
           </div>
           <div className='row'>
