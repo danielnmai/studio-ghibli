@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-export const FETCH_ALL_PEOPLE = 'FETCH_ALL_PEOPLE'
-export const FETCH_PERSON_INFO = 'FETCH_PERSON_INFO'
+export const FETCH_ALL_CHARACTERS = 'FETCH_ALL_CHARACTERS'
+export const FETCH_CHARACTER = 'FETCH_CHARACTER'
 
 export const fetchAllPeople = () => {
   const url =  'https://ghibliapi.herokuapp.com/people'
@@ -9,11 +9,11 @@ export const fetchAllPeople = () => {
 
   return (dispatch) => {
   request.then((data) => {
-    dispatch({ type: FETCH_ALL_PEOPLE, payload: data })
+    dispatch({ type: FETCH_ALL_CHARACTERS, payload: data })
   });
 };
 }
 
 export const fetchCharacterInfo = () => {
-  return {type: FETCH_PERSON_INFO, payload: 'person info'}
+  return {type: FETCH_CHARACTER, payload: 'person info'}
 }

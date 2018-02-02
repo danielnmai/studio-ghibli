@@ -2,7 +2,7 @@ import React from 'react';
 import CharacterInfo from './CharacterInfo'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
-import {fetchAllPeople, fetchCharacterInfo} from '../actions'
+import {fetchAllPeople} from '../../actions'
 
 class CharacterList extends React.Component {
 
@@ -22,7 +22,7 @@ class CharacterList extends React.Component {
         <thead>
           <tr>
             <th>
-              Characters 
+              Characters
             </th>
           </tr>
         </thead>
