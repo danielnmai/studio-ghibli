@@ -3,6 +3,7 @@ import CharacterInfo from './CharacterInfo'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
 import {fetchAllCharacters} from '../../actions'
+import { Link } from 'react-router-dom'
 import '../css/character.css'
 
 class CharacterList extends React.Component {
@@ -26,7 +27,7 @@ class CharacterList extends React.Component {
                   <div className='col-sm-2'>
                     <strong>Characters</strong>
                   </div>
-                  <div className='col-sm-3'><a href='/films'>Your Favorites</a></div>
+                  <div className='col-sm-3'><Link to='/favorites'>Your Favorites</Link></div>
                 </div>
 
               </th>

@@ -1,5 +1,8 @@
 import React from 'react';
 import '../css/character.css'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux';
+import {addFavorite} from '../../actions'
 
 class CharacterInfo extends React.Component {
   constructor(props){
@@ -11,9 +14,10 @@ class CharacterInfo extends React.Component {
       this.setState({showDetailInfo: !currentState})
     }
 
-  addFavorite = (info) => {
+  addFavorite = (event, info) => {
+    event.stopPropagation();
     console.log('Item added!')
-    console.log(info)
+    this.props.addFavorite(info)
   }
   renderSpecies = (info) => {
     return (
@@ -61,7 +65,7 @@ class CharacterInfo extends React.Component {
         <td>
           <div className='row'>
             <div className='col-sm-2'>
-              <button type='button' onClick={this.addFavorite(info)} className='btn btn-sm btn-outline-info'>Add Favorite</button>
+              <button type='button' onClick={event => this.addFavorite(event, info)} className='btn btn-sm btn-outline-info'>Add Favorite</button>
             </div>
           </div>
           <div className='row'>
@@ -108,4 +112,9 @@ class CharacterInfo extends React.Component {
 
 }
 
-export default CharacterInfo
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    addFavorite
+  }, dispatch);
+}
+export default connect(null, mapDispatchToProps)(CharacterInfo)

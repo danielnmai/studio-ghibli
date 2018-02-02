@@ -3,8 +3,9 @@ import axios from 'axios'
 export const FETCH_ALL_CHARACTERS = 'FETCH_ALL_CHARACTERS'
 export const FETCH_CHARACTER = 'FETCH_CHARACTER'
 export const FILTER_CHARACTERS = 'FILTER_CHARACTERS'
-export const FETCH_ALL_FILMS= 'FETCH_ALL_FILMS'
-export const FETCH_FILM= 'FETCH_FILM'
+export const FETCH_ALL_FILMS = 'FETCH_ALL_FILMS'
+export const FETCH_FILM = 'FETCH_FILM'
+export const ADD_FAVORITE = 'ADD_FAVORITE'
 
 const ROOT_URL = 'https://ghibliapi.herokuapp.com'
 
@@ -57,4 +58,9 @@ export const fetchFilm = (filmId) => {
     dispatch({ type: FETCH_FILM, payload: data })
   });
 };
+}
+
+export const addFavorite = (item) => {
+  console.log(item)
+  return {type: ADD_FAVORITE, payload: item}
 }
