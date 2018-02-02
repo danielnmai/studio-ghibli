@@ -1,5 +1,7 @@
 import React from 'react';
 import CharacterInfo from './CharacterInfo'
+import Item from '../../common/Item'
+import ItemList from '../../common/ItemList'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
 import {fetchAllCharacters} from '../../actions'
@@ -12,32 +14,20 @@ class CharacterList extends React.Component {
     this.props.fetchAllCharacters();
   }
 
-  renderCharacterInfo(data) {
-    return <CharacterInfo key={data.id} info={data}/>
-  }
+  renderItem(data){
+    let filmType = 'film', characterType = 'character'
+    return (
+      <tr key={data.id}>
+        <td>
+          <Item data={data} type={characterType} />
+        </td>
+      </tr>
 
+    )
+  }
   renderCharacters(chars) {
       return (
-        <div className='container'>
-          <table className="table table-hover">
-          <thead>
-            <tr>
-              <th>
-                <div className='row'>
-                  <div className='col-sm-2'>
-                    <strong>Characters</strong>
-                  </div>
-                  <div className='col-sm-3'><Link to='/favorites'>Your Favorites</Link></div>
-                </div>
-
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {chars.map(data => this.renderCharacterInfo(data))}
-          </tbody>
-        </table>
-        </div>
+        <ItemList items={chars} type={'char'} showFavorites={true} />
       )
   }
 

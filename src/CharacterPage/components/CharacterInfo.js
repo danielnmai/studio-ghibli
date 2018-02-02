@@ -1,6 +1,7 @@
 import React from 'react';
 import '../css/character.css'
 import {connect} from 'react-redux'
+import Item from '../../common/Item'
 import {bindActionCreators} from 'redux';
 import {addFavorite} from '../../actions'
 
@@ -53,51 +54,21 @@ class CharacterInfo extends React.Component {
     )
   }
   render(){
-    const styles = {
-      button: {
-        outline: 'none'
-      }
-    }
     const { info } = this.props
+    console.log(this.props)
     const { showDetailInfo } = this.state
     return (
       <tr onClick={this.onClick}>
         <td>
-          <div className='row'>
-            <div className='col-sm-2'>
-              <button type='button' onClick={event => this.addFavorite(event, info)} className='btn btn-sm btn-outline-info'>Add Favorite</button>
+          {this.props.showFavorites ? (
+            <div className='row'>
+              <div className='col-sm-2'>
+                <button type='button' onClick={event => this.addFavorite(event, info)} className='btn btn-sm btn-outline-info'>Add Favorite</button>
+              </div>
             </div>
-          </div>
-          <div className='row'>
-            <div className='col-sm-2'>
-              <strong>Name</strong>
-            </div>
-            <div className='col-sm-2'>{ info.name }</div>
-          </div>
-          <div className='row'>
-            <div className='col-sm-2'>
-              <strong>Gender</strong>
-            </div>
-            <div className='col-sm-2'>{ info.gender }</div>
-          </div>
-          <div className='row'>
-            <div className='col-sm-2'>
-              <strong>Age</strong>
-            </div>
-            <div className='col-sm-2'>{ info.age }</div>
-          </div>
-          <div className='row'>
-            <div className='col-sm-2'>
-              <strong>Eye Color</strong>
-            </div>
-            <div className='col-sm-2'>{ info.eye_color }</div>
-          </div>
-          <div className='row'>
-            <div className='col-sm-2'>
-              <strong>Hair Color</strong>
-            </div>
-            <div className='col-sm-2'>{ info.hair_color }</div>
-          </div>
+          ) : null }
+
+          <Item info={info} type={'character'} />
           <div>
             {
               showDetailInfo ? (
@@ -109,7 +80,6 @@ class CharacterInfo extends React.Component {
       </tr>
     )
   }
-
 }
 
 function mapDispatchToProps(dispatch) {
