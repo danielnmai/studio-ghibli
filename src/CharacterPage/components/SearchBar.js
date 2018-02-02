@@ -2,38 +2,53 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchCharacter } from '../../actions';
+import AutoComplete from 'material-ui/AutoComplete';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 class SearchBar extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      term: ''
+      searchText: ''
     };
-    this.onInputChange = this.onInputChange.bind(this);
-    this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
-  onInputChange(event) {
-    this.setState({term: event.target.value});
-  }
+  handleUpdateInput = (searchText) => {
+    this.setState({searchText: searchText});
+  };
 
-  onFormSubmit(event) {
-    event.preventDefault();
-    this.props.fetchCharacter(this.state.term);
-    this.setState({ term: ''});
-  }
+  handleNewRequest = (name) => {
+    const { characters } = this.props.characters;
+    let character = characters.find(item => item.name === name)
+    this.props.fetchCharacter(character.id);
+    this.setState({
+      searchText: '',
+    });
+  };
+
 
   render() {
-    return (<form onSubmit={this.onFormSubmit} className="input-group">
-      <input placeholder="Type in Your Favorite Character Names" className="form-control" value={this.state.term} onChange={this.onInputChange}/>
-      <span className="input-group-btn">
-        <button type="submit" className="btn btn-secondary">
-          Submit
-        </button>
-      </span>
-    </form>)
+    const { characters } = this.props.characters;
+    if(characters) {
+      return (
+        <MuiThemeProvider>
+          <AutoComplete
+            hintText='Type in Your Favorite Character Names'
+            dataSource={characters.map((info) => info.name)}
+            onUpdateInput={this.handleUpdateInput}
+            onNewRequest={this.handleNewRequest}
+            filter={AutoComplete.caseInsensitiveFilter}
+            fullWidth={true}
+            />
+        </MuiThemeProvider>
+      )
+    }
+    return null
+
   }
+}
+function mapStateToProps({characters}) {
+  return {characters}
 }
 
 function mapDispatchToProps(dispatch) {
@@ -42,4 +57,4 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(SearchBar);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
