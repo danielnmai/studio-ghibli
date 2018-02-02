@@ -2,6 +2,7 @@ import axios from 'axios'
 
 export const FETCH_ALL_CHARACTERS = 'FETCH_ALL_CHARACTERS'
 export const FETCH_CHARACTER = 'FETCH_CHARACTER'
+export const FILTER_CHARACTERS = 'FILTER_CHARACTERS'
 export const FETCH_ALL_FILMS= 'FETCH_ALL_FILMS'
 export const FETCH_FILM= 'FETCH_FILM'
 
@@ -29,6 +30,11 @@ export const fetchCharacter = (characterId) => {
   });
 };
 }
+
+export const filterCharacters = (characters) => {
+  return {type: FILTER_CHARACTERS, payload: characters}
+}
+
 
 export const fetchAllFilms = () => {
   const url =  `${ROOT_URL}/films`

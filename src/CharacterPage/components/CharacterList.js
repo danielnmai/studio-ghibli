@@ -14,11 +14,7 @@ class CharacterList extends React.Component {
     return <CharacterInfo key={data.id} info={data}/>
   }
 
-  render() {
-    const {characters} = this.props.characters;
-    console.log(this.props)
-    if (characters) {
-
+  renderCharacters(chars) {
       return (<table className="table table-hover">
         <thead>
           <tr>
@@ -28,14 +24,26 @@ class CharacterList extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {characters.map(data => this.renderCharacterInfo(data))}
+          {chars.map(data => this.renderCharacterInfo(data))}
         </tbody>
       </table>)
-
-    }
-    return <div>Loading</div>
   }
 
+  render() {
+    const {filterCharacters, characters} = this.props.characters;
+    console.log(this.props)
+    if(characters) {
+      if(filterCharacters){
+        return (
+          <div>{this.renderCharacters(filterCharacters)}</div>
+        )
+      }
+      return (
+        <div>{this.renderCharacters(characters)}</div>
+      )
+    }
+    return null
+  }
 }
 
 function mapStateToProps({characters}) {
