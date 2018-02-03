@@ -4,7 +4,7 @@ import FilmInfo from '../FilmPage/components/FilmInfo'
 import { Link } from 'react-router-dom'
 
 
-const ItemList = ({title, items, showFavorites}) => {
+const ItemList = ({title, items, favoriteType, showFavorites}) => {
 
   const renderItem = (data) => {
     if(title === 'Characters') {
@@ -12,12 +12,24 @@ const ItemList = ({title, items, showFavorites}) => {
       <CharacterInfo key={data.id} info={data} showFavorites={showFavorites} />
     )
     }
+
     if(title === 'Films') {
       return (
       <FilmInfo key={data.id} info={data} showFavorites={showFavorites} />
       )
     }
 
+    if(favoriteType === 'char') {
+      return (
+      <CharacterInfo key={data.id} info={data} showFavorites={showFavorites} />
+    )
+    }
+
+    if(favoriteType === 'film') {
+      return (
+      <FilmInfo key={data.id} info={data} showFavorites={showFavorites} />
+    )
+    }
   }
     return (
       <div className='container'>

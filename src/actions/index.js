@@ -6,7 +6,8 @@ export const FILTER_CHARACTERS = 'FILTER_CHARACTERS'
 export const FILTER_FILMS = 'FILTER_FILMS'
 export const FETCH_ALL_FILMS = 'FETCH_ALL_FILMS'
 export const FETCH_FILM = 'FETCH_FILM'
-export const ADD_FAVORITE = 'ADD_FAVORITE'
+export const ADD_FAVORITE_CHARACTER = 'ADD_FAVORITE_CHARACTER'
+export const ADD_FAVORITE_FILM = 'ADD_FAVORITE_FILM'
 
 const ROOT_URL = 'https://ghibliapi.herokuapp.com'
 
@@ -65,6 +66,9 @@ export const filterFilms = (films) => {
 }
 
 
-export const addFavorite = (item) => {
-  return {type: ADD_FAVORITE, payload: item}
+export const addFavoriteCharacter = (item) => {
+  return {type: ADD_FAVORITE_CHARACTER, payload: item}
+}
+export const addFavoriteFilm = (item) => {
+  return {type: ADD_FAVORITE_FILM, payload: item}
 }

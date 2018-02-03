@@ -1,12 +1,15 @@
 import { combineReducers } from 'redux';
 import characterReducer from './characterReducer';
 import filmReducer from './filmReducer';
-import favoriteReducer from './favoriteReducer';
+import favoriteCharactersReducer from './favoriteCharactersReducer';
+import favoriteFilmsReducer from './favoriteFilmsReducer';
+
 
 const rootReducer = combineReducers({
   characters: characterReducer,
   films: filmReducer,
-  favorites: favoriteReducer
+  favoriteCharacters: favoriteCharactersReducer,
+  favoriteFilms: favoriteFilmsReducer
 });
 
 export default rootReducer;

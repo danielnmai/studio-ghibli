@@ -3,7 +3,7 @@ import '../css/film.css'
 import {connect} from 'react-redux'
 import Item from '../../common/Item'
 import {bindActionCreators} from 'redux';
-import {addFavorite} from '../../actions'
+import {addFavoriteFilm} from '../../actions'
 
 class FilmInfo extends React.Component {
   constructor(props){
@@ -18,7 +18,7 @@ class FilmInfo extends React.Component {
   addFavorite = (event, info) => {
     event.stopPropagation();
     console.log('Item added!')
-    this.props.addFavorite(info)
+    this.props.addFavoriteFilm(info)
   }
   renderSpecies = (info) => {
     return (
@@ -86,7 +86,7 @@ class FilmInfo extends React.Component {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    addFavorite
+    addFavoriteFilm
   }, dispatch);
 }
 export default connect(null, mapDispatchToProps)(FilmInfo)
