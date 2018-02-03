@@ -2,6 +2,7 @@ import React from 'react';
 import '../css/character.css'
 import {connect} from 'react-redux'
 import Item from '../../common/Item'
+import { Link } from 'react-router-dom'
 import {bindActionCreators} from 'redux';
 import {addFavoriteCharacter} from '../../actions'
 
@@ -18,20 +19,10 @@ class CharacterInfo extends React.Component {
   addFavorite = (event, info) => {
     event.stopPropagation();
     console.log('Item added!')
+    console.log(this.props.match.params.id);
     this.props.addFavoriteCharacter(info)
   }
-  renderSpecies = (info) => {
-    return (
-    <div className='row'>
-      <div className='col-sm-2'>
-        <strong>Species</strong>
-      </div>
-      <div className='col-sm-2'>
-        <a href={ info.species }>Link</a>
-      </div>
-    </div>
-    )
-  }
+
   renderFilms = (info) => {
     return (
     <div className='row'>
@@ -48,14 +39,12 @@ class CharacterInfo extends React.Component {
     const { info } = this.props
     return (
       <div>
-        {this.renderSpecies(info)}
         {this.renderFilms(info)}
       </div>
     )
   }
   render(){
     const { info } = this.props
-    console.log(this.props)
     const { showDetailInfo } = this.state
     return (
       <tr onClick={this.onClick}>
