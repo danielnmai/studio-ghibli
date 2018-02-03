@@ -26,8 +26,9 @@ class CharacterList extends React.Component {
     )
   }
   renderCharacters(chars) {
+    let title = 'Characters'
       return (
-        <ItemList items={chars} type={'char'} showFavorites={true} />
+        <ItemList title={title} items={chars} type={'char'} showFavorites={true} />
       )
   }
 

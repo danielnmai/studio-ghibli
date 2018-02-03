@@ -3,6 +3,7 @@ import axios from 'axios'
 export const FETCH_ALL_CHARACTERS = 'FETCH_ALL_CHARACTERS'
 export const FETCH_CHARACTER = 'FETCH_CHARACTER'
 export const FILTER_CHARACTERS = 'FILTER_CHARACTERS'
+export const FILTER_FILMS = 'FILTER_FILMS'
 export const FETCH_ALL_FILMS = 'FETCH_ALL_FILMS'
 export const FETCH_FILM = 'FETCH_FILM'
 export const ADD_FAVORITE = 'ADD_FAVORITE'
@@ -54,13 +55,16 @@ export const fetchFilm = (filmId) => {
 
   return (dispatch) => {
   request.then((data) => {
-    console.log(data);
     dispatch({ type: FETCH_FILM, payload: data })
   });
 };
 }
 
+export const filterFilms = (films) => {
+  return {type: FILTER_FILMS, payload: films}
+}
+
+
 export const addFavorite = (item) => {
-  console.log(item)
   return {type: ADD_FAVORITE, payload: item}
 }

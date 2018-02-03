@@ -1,8 +1,12 @@
 import React from 'react';
 import FilmInfo from './FilmInfo'
+import Item from '../../common/Item'
+import ItemList from '../../common/ItemList'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
 import {fetchAllFilms} from '../../actions'
+import { Link } from 'react-router-dom'
+import '../css/film.css'
 
 class FilmList extends React.Component {
 
@@ -10,32 +14,38 @@ class FilmList extends React.Component {
     this.props.fetchAllFilms();
   }
 
-  renderFilmInfo(data) {
-    return <FilmInfo key={data.id} info={data}/>
+  renderItem(data){
+    let filmType = 'film'
+    return (
+      <tr key={data.id}>
+        <td>
+          <Item data={data} type={filmType} />
+        </td>
+      </tr>
+
+    )
+  }
+  renderFilms(films) {
+    let title = 'Films'
+      return (
+        <ItemList title={title} items={films} showFavorites={true} />
+      )
   }
 
   render() {
-    const {films} = this.props.films;
-    console.log(this.props)
-    if (films) {
-
-      return (<table className="table table-hover">
-        <thead>
-          <tr>
-            <th>
-              Films
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {films.map(data => this.renderFilmInfo(data))}
-        </tbody>
-      </table>)
-
+    const {filterFilms, films} = this.props.films;
+    if(films) {
+      if(filterFilms){
+        return (
+          <div>{this.renderFilms(filterFilms)}</div>
+        )
+      }
+      return (
+        <div>{this.renderFilms(films)}</div>
+      )
     }
-    return <div>Loading</div>
+    return null
   }
-
 }
 
 function mapStateToProps({films}) {

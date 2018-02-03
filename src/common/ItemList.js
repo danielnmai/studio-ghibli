@@ -1,15 +1,24 @@
 import React from 'react'
 import CharacterInfo from '../CharacterPage/components/CharacterInfo'
+import FilmInfo from '../FilmPage/components/FilmInfo'
 import { Link } from 'react-router-dom'
 
 
-const ItemList = ({items, type, showFavorites}) => {
+const ItemList = ({title, items, showFavorites}) => {
 
-  const renderItem = (data) => (
-    <CharacterInfo key={data.id} info={data} showFavorites={showFavorites} />
-  )
+  const renderItem = (data) => {
+    if(title === 'Characters') {
+      return (
+      <CharacterInfo key={data.id} info={data} showFavorites={showFavorites} />
+    )
+    }
+    if(title === 'Films') {
+      return (
+      <FilmInfo key={data.id} info={data} showFavorites={showFavorites} />
+      )
+    }
 
-  if(type === 'char') {
+  }
     return (
       <div className='container'>
         <table className="table table-hover">
@@ -17,8 +26,8 @@ const ItemList = ({items, type, showFavorites}) => {
           <tr>
             <th>
               <div className='row'>
-                <div className='col-sm-3'>
-                  <strong>Characters</strong>
+                <div className='col-sm-6'>
+                  <strong>{title}</strong>
                 </div>
                 { showFavorites ? (
                   <div className='col-sm-3'><Link to='/favorites'>Your Favorites</Link></div>
@@ -34,8 +43,6 @@ const ItemList = ({items, type, showFavorites}) => {
       </table>
       </div>
     )
-  }
-
 
 }
 

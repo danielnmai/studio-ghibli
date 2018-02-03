@@ -60,13 +60,15 @@ class CharacterInfo extends React.Component {
     return (
       <tr onClick={this.onClick}>
         <td>
-          {this.props.showFavorites ? (
+          {
+            this.props.showFavorites ? (
             <div className='row'>
               <div className='col-sm-2'>
                 <button type='button' onClick={event => this.addFavorite(event, info)} className='btn btn-sm btn-outline-info'>Add Favorite</button>
               </div>
             </div>
-          ) : null }
+          ) : null
+          }
 
           <Item info={info} type={'character'} />
           <div>
