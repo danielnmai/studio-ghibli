@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import {fetchCharacter} from '../../actions';
 import Item from '../../common/Item';
 import CharacterInfo from './CharacterInfo'
+import NavBar from '../../common/NavBar'
 
 class CharacterDetail extends React.Component {
 
@@ -15,6 +16,7 @@ class CharacterDetail extends React.Component {
     const {character} = this.props.characters
     if (character) {
       return (<div className='container'>
+        <NavBar />
         <table className="table table-hover">
           <thead>
             <tr>

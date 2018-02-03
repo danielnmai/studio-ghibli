@@ -2,6 +2,7 @@ import axios from 'axios'
 
 export const FETCH_ALL_CHARACTERS = 'FETCH_ALL_CHARACTERS'
 export const FETCH_CHARACTER = 'FETCH_CHARACTER'
+export const FETCH_SPECIES = 'FETCH_SPECIES'
 export const FILTER_CHARACTERS = 'FILTER_CHARACTERS'
 export const FILTER_FILMS = 'FILTER_FILMS'
 export const FETCH_ALL_FILMS = 'FETCH_ALL_FILMS'
@@ -28,8 +29,18 @@ export const fetchCharacter = (characterId) => {
 
   return (dispatch) => {
   request.then((data) => {
-    console.log(data);
     dispatch({ type: FETCH_CHARACTER, payload: data })
+  });
+};
+}
+
+export const fetchSpecies = (id) => {
+  const url =  `${ROOT_URL}/species/${id}`
+  const request = axios.get(url)
+  return (dispatch) => {
+  request.then((data) => {
+    console.log(data)
+    dispatch({ type: FETCH_SPECIES, payload: data })
   });
 };
 }

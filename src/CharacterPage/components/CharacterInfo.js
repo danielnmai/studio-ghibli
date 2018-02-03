@@ -19,18 +19,20 @@ class CharacterInfo extends React.Component {
   addFavorite = (event, info) => {
     event.stopPropagation();
     console.log('Item added!')
-    console.log(this.props.match.params.id);
     this.props.addFavoriteCharacter(info)
   }
 
   renderFilms = (info) => {
+    const filmURL = info.films.toString()
+    const filmId = filmURL.substr(filmURL.lastIndexOf('/') + 1)
+    const url = `/films/${filmId}`
     return (
     <div className='row'>
       <div className='col-sm-2'>
         <strong>Films</strong>
       </div>
       <div className='col-sm-2'>
-        <a href={ info.films }>Link</a>
+        <Link to={url}> Link </Link>
       </div>
     </div>
     )

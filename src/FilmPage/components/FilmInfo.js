@@ -2,6 +2,7 @@ import React from 'react';
 import '../css/film.css'
 import {connect} from 'react-redux'
 import Item from '../../common/Item'
+import Species from '../../common/Species'
 import {bindActionCreators} from 'redux';
 import {addFavoriteFilm} from '../../actions'
 
@@ -20,14 +21,16 @@ class FilmInfo extends React.Component {
     console.log('Item added!')
     this.props.addFavoriteFilm(info)
   }
-  renderFilms = (info) => {
+  renderSpecies = (info) => {
+    const speciesURL = info.species.toString()
+    const id = speciesURL.substr(speciesURL.lastIndexOf('/') + 1)
     return (
     <div className='row'>
       <div className='col-sm-2'>
-        <strong>Films</strong>
+        <strong>Species</strong>
       </div>
-      <div className='col-sm-2'>
-        <a href={ info.films }>Link</a>
+      <div className='col-sm-10'>
+        <Species id={id} />
       </div>
     </div>
     )
@@ -36,7 +39,8 @@ class FilmInfo extends React.Component {
     const { info } = this.props
     return (
       <div>
-        {this.renderFilms(info)}
+        <p>{info.description}</p>
+        {this.renderSpecies(info)}
       </div>
     )
   }

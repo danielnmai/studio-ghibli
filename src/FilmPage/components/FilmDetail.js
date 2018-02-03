@@ -4,6 +4,8 @@ import {bindActionCreators} from 'redux';
 import {fetchFilm} from '../../actions';
 import Item from '../../common/Item';
 import FilmInfo from './FilmInfo'
+import NavBar from '../../common/NavBar'
+
 
 class FilmDetail extends React.Component {
 
@@ -15,7 +17,9 @@ class FilmDetail extends React.Component {
     const {film} = this.props.films
     console.log(this.props.films)
     if (film) {
-      return (<div className='container'>
+      return (
+        <div className='container'>
+        <NavBar />
         <table className="table table-hover">
           <thead>
             <tr>
