@@ -34,7 +34,6 @@ class CharacterList extends React.Component {
 
   render() {
     const {filterCharacters, characters} = this.props.characters;
-    console.log(this.props)
     if(characters) {
       if(filterCharacters){
         return (

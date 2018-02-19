@@ -8,17 +8,14 @@ class Species extends React.Component {
     this.props.fetchSpecies(this.props.id)
   }
 
-  renderCharacterList(){
+  renderCharacterList(characters){
 
   }
   render(){
     const { species } = this.props.species
+    console.log(this.props.characters)
     if(species){
-      species.people.forEach(item => {
-        console.log(item)
-      })
-    }
-    if(species){
+
       return (
         <div>
           <div className='row'>
@@ -47,11 +44,11 @@ class Species extends React.Component {
   }
 }
 
-function mapStateToProps({species}) {
-  return {species}
+function mapStateToProps({species, characters}) {
+  return {species, characters}
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({fetchSpecies, fetchCharacter}, dispatch)}
+  return bindActionCreators({fetchSpecies, fetchCharacter }, dispatch)}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Species)
