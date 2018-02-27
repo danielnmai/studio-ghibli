@@ -1,17 +1,21 @@
 import React from 'react'
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {fetchSpecies} from '../actions';
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {fetchSpecies, fetchCharacter} from '../actions'
 
 class Species extends React.Component {
   componentDidMount(){
     this.props.fetchSpecies(this.props.id)
   }
 
+  renderCharacterList(characters){
+
+  }
   render(){
     const { species } = this.props.species
-    console.log(species)
+    console.log(this.props.characters)
     if(species){
+
       return (
         <div>
           <div className='row'>
@@ -40,14 +44,11 @@ class Species extends React.Component {
   }
 }
 
-function mapStateToProps({species}) {
-  return {species}
+function mapStateToProps({species, characters}) {
+  return {species, characters}
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({
-    fetchSpecies
-  }, dispatch);
-}
+  return bindActionCreators({fetchSpecies, fetchCharacter }, dispatch)}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Species);
+export default connect(mapStateToProps, mapDispatchToProps)(Species)
