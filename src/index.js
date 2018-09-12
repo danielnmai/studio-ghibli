@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import reducers from './reducers'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
-import registerServiceWorker from './registerServiceWorker';
+// import registerServiceWorker from './registerServiceWorker';
 
 
 const store = createStore(reducers, applyMiddleware(ReduxPromise, thunk));
@@ -21,4 +21,5 @@ ReactDOM.render(
     </Provider>
 , document.getElementById('root'));
 
-registerServiceWorker();
+//Don't need it if deploying to HTTP sites
+// registerServiceWorker();
