@@ -8,19 +8,18 @@ import Favorite from './FavoritePage/Favorite'
 
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 
-class App extends Component {
+class App extends Component {  
   render() {
     return (
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <div>
-          <Route exact path="/" component={Home}/>
-          <Route exact path="/characters" component={Character}/>
-          <Route exact path="/films" component={Film}/>
-          <Route path="/favorites" component={Favorite}/>
-          <Route path="/characters/:id" component={CharacterDetail}/>
-          <Route path="/films/:id" component={FilmDetail}/>
+          <Route path={`/`} component={Home}/>
+          <Route path={`/characters`} component={Character}/>
+          <Route path={`/films`} component={Film}/>
+          <Route path={`/favorites`} component={Favorite}/>
+          <Route path={`/characters/:id`} component={CharacterDetail}/>
+          <Route path={`/films/:id`} component={FilmDetail}/>
         </div>
-
       </Router>
     );
   }
